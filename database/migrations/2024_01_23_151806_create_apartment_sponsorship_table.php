@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships');
 
             $table->timestamp('creation_time');
-            $table->timestamp('expiration_time');
+            $table->timestamp('expiration_date')->default(now());
 
             $table->timestamps();
         });
