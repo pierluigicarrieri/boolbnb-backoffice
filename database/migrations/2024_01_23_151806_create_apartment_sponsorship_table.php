@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('sponsorship_id');
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships');
 
-            $table->timestamp('created_at');
-            $table->timestamp('expired_at');
+            $table->timestamp('creation_time');
+            $table->timestamp('expiration_time');
 
             $table->timestamps();
         });
