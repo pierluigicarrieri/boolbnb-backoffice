@@ -20,12 +20,13 @@ class ServiceFactory extends Factory
             'TV',
             'Dog friendly',
         ];
-
-        // Scegli casualmente uno dei servizi definiti
-        $serviceName = $this->faker->randomElement($services);
-
+    
+        // Mescola l'array di servizi e prendi i primi 7 elementi
+        shuffle($services);
+        $selectedServices = array_slice($services, 0, 7);
+    
         return [
-            'name' => $serviceName,
+            'name' => $this->faker->unique()->randomElement($selectedServices),
         ];
     }
 }

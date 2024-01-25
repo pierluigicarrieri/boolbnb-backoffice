@@ -21,4 +21,19 @@ class Apartment extends Model
         'photo',
         'visible',
     ];
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function (Apartment $apartment) {
+            $services = Service::inRandomOrder()->limit(rand(1, 7))->get();
+            $apartment->services()->sync($services);
+        });
+    }
 }
