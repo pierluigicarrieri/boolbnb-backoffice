@@ -26,6 +26,10 @@ class Apartment extends Model
     {
         return $this->belongsToMany(Service::class);
     }
+    public function sponsorships()
+    {
+        return $this->belongsToMany(Sponsorship::class);
+    }
 
     protected static function boot()
     {
@@ -34,6 +38,8 @@ class Apartment extends Model
         static::created(function (Apartment $apartment) {
             $services = Service::inRandomOrder()->limit(rand(1, 7))->get();
             $apartment->services()->sync($services);
+            $sponsorships = Sponsorship::inRandomOrder()->limit(rand(1, 3))->get();
+            $apartment->sponsorships()->sync($sponsorships);
         });
     }
 }
