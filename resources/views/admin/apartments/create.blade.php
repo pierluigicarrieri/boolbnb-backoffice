@@ -14,56 +14,30 @@
                 @method('POST')
 
                 <div class="col-12">
-                    <label for="inputTitle" class="form-label text-light ">Email <span class="text-danger">*</span></label>
-                    {{-- value="{{ old('email'= ottenere il valore precedentemente inviato --}}
-                    {{-- , $name?->email) }} = stampare il valore di email --}}
-                    {{-- , $name?->email) }} = "?" se la variabile $name non è definito assegna "null"  --}}
-                    <input type="email" class="form-control @error('email') is-invalid @enderror"
-                        value="{{ old('email') }}" id="inputemail" name="email">
-                    <div id="error-email" class="invalid_feedback"></div>
-                    @error('email')
-                        <div class="invalid_feedback">{{ $message }}</div>
+                    <label for="inputTitle" class="form-label text-light">Nome dell'appartamento <span
+                            class="text-danger">*</span></label>
+                    <input type="text" class="form-control @error('apartment_name') is-invalid @enderror"
+                        value="{{ old('apartment_name') }}" id="inputapartment_name" name="apartment_name">
+                    <div id="error-apartmentname" class="invalid_feedback"></div>
+                    @error('apartment_name')
+                        <div class="invalid_feedback"></div>
                     @enderror
                 </div>
                 <div class="col-12">
-                    <label for="inputTitle" class="form-label text-light">Numero di telefono <span
+                    <label for="inputTitle" class="form-label text-light">Immagine Appartamento <span
                             class="text-danger">*</span></label>
-                    {{-- value="{{ old('email'= ottenere il valore precedentemente inviato --}}
-                    {{-- , $name?->email) }} = stampare il valore di email --}}
-                    {{-- , $name?->email) }} = "?" se la variabile $name non è definito assegna "null"  --}}
-                    <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                        value="{{ old('phone') }}" id="inputphone" name="phone">
-                    <div id="error-phone" class="invalid_feedback"></div>
-                    @error('phone')
-                        <div class="invalid_feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="col-12">
-                    <label for="inputTitle" class="form-label text-light">Nome dell'attività <span
-                            class="text-danger">*</span></label>
-                    {{-- value="{{ old('email'= ottenere il valore precedentemente inviato --}}
-                    {{-- , $name?->email) }} = stampare il valore di email --}}
-                    {{-- , $name?->email) }} = "?" se la variabile $name non è definito assegna "null"  --}}
-                    <input type="text" class="form-control @error('activity_name') is-invalid @enderror"
-                        value="{{ old('activity_name') }}" id="inputactivity_name" name="activity_name">
-                    <div id="error-activityname" class="invalid_feedback"></div>
-                    @error('activity_name')
-                        <div class="invalid_feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="col-12">
-                    <label for="inputTitle" class="form-label text-light">Immagine Ristorante <span
-                            class="text-danger">*</span></label>
-                    {{-- value="{{ old('email'= ottenere il valore precedentemente inviato --}}
-                    {{-- , $name?->email) }} = stampare il valore di email --}}
-                    {{-- , $name?->email) }} = "?" se la variabile $name non è definito assegna "null"  --}}
                     <input type="file" class="form-control @error('img') is-invalid @enderror"
                         value="{{ old('img') }}" id="inputimg" name="img" accept="image/*">
                     <div id="error-img" class="invalid_feedback"></div>
                     @error('img')
-                        <div class="invalid_feedback">{{ $message }}</div>
+                        <div class="invalid_feedback"></div>
                     @enderror
                 </div>
+
+
+
+
+                
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Indirizzo <span
                             class="text-danger">*</span></label>
