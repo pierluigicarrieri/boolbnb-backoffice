@@ -22,15 +22,6 @@ class Apartment extends Model
         'visible',
     ];
 
-    public function services()
-    {
-        return $this->belongsToMany(Service::class);
-    }
-    public function sponsorships()
-    {
-        return $this->belongsToMany(Sponsorship::class);
-    }
-
     protected static function boot()
     {
         parent::boot();
@@ -41,5 +32,20 @@ class Apartment extends Model
             $sponsorships = Sponsorship::inRandomOrder()->limit(rand(1, 3))->get();
             $apartment->sponsorships()->sync($sponsorships);
         });
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
+
+    public function sponsorships()
+    {
+        return $this->belongsToMany(Sponsorship::class);
     }
 }
