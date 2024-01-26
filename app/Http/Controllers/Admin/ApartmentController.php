@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ApartmentCreateRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Apartment;
 use App\Models\Service;
@@ -36,8 +37,10 @@ class ApartmentController extends Controller
         //Validazione
         $data = $request->validated();
 
-        //Il campo del form Img viene messo nello storage 
-        $data["img"] = Storage::put("", $data["photo"]);
+        // dd($data);
+
+        //Il campo del form photo viene messo nello storage 
+        $data["photo"] = Storage::put("", $data["photo"]);
 
         //Prende lo user che ha fatto la request
         $user = $request->user();
@@ -49,8 +52,8 @@ class ApartmentController extends Controller
 
         //se nel form è presente il valore data services  
         if (key_exists("services", $data)) {
-            //associamento tra apartment e il service
-            $apartment->services()->attach($data["services"]);
+            //associamento tra apartment e il serviceß
+            $apartment->services()->sync($data["services"]);
         }
         return redirect()->route("admin.apartments.show", $apartment->id);
     }
@@ -58,9 +61,28 @@ class ApartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    // public function show($id)
+    // {
+    //     //Ottiene l'ID dell'appartamento associato all'utente autenticato.
+    //     $apartments_id = Auth::user()->apartments->id;
+
+
+    //     $apartment = Apartment::where("id", $id)->firstOrFail();
+
+    //     //Verifica se l'ID del ristorante coincide con l'ID del ristorante dell'utente.
+    //     if ($apartments_id !== $apartment->id) {
+    //         abort(404);
+    //     } else {
+    //         return view("admin.apartments.show", compact("apartment"));
+    //     }
+    // }
+    public function show($id)
     {
-        //
+
+        $apartment = Apartment::where("id", $id)->firstOrFail();
+        
+        return view("admin.apartments.show", compact("apartment"));
+
     }
 
     /**
