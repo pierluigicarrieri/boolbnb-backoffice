@@ -147,22 +147,23 @@
                 {{-- Apartment services checkboxes and error handling through js --}}
                 <label for="inputTitle" class="form-label text-light">Servizi inclusi<span class="text-danger">*</span></label>
                 <div class="d-flex gap-3">
-                    @foreach ($types as $type)
-                        <div class="form-check form-switch  @error('types') is-invalid @enderror">
-                            <input class="form-check-input type-checkbox" type="checkbox" name="types[]" role="switch"
-                                id="{{ $type->id }}" value="{{ $type->id }}">
+                    @foreach ($services as $service)
+                        <div class="form-check form-switch  @error('services') is-invalid @enderror">
+                            <input class="form-check-input type-checkbox" type="checkbox" name="services[]" role="switch"
+                                id="{{ $service->id }}" value="{{ $service->id }}">
                             <label class="form-check-label text-light"
-                                for="{{ $type->id }}">{{ $type->name }}</label>
+                                for="{{ $service->id }}">{{ $service->name }}</label>
                         </div>
                     @endforeach
                 </div>
-                <div id="error-type" class="invalid_feedback"></div>
-                @error('types')
-                    <div class="invalid_feedback">{{ $message }}</div>
+                <div id="error-service" class="invalid_feedback"></div>
+                @error('services')
+                    <div class="invalid_feedback"></div>
                 @enderror
-                <div class="d-flex justify-content-center">
 
-                    <button class="btn btn-primary" type="submit">Crea il tuo ristorante</button>
+                {{-- Submit button to create apartment --}}
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary" type="submit">Metti online il tuo appartamento</button>
                 </div>
             </form>
         </div>
