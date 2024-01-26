@@ -21,7 +21,6 @@ return new class extends Migration
             $table->timestamp('creation_time');
             $table->timestamp('expiration_date')->default(now());
 
-            $table->timestamps();
         });
     }
 
