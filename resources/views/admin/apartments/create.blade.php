@@ -13,8 +13,9 @@
                 @csrf()
                 @method('POST')
 
+                {{-- Apartment name insertion and error handling through js --}}
                 <div class="col-12">
-                    <label for="inputTitle" class="form-label text-light">Nome dell'appartamento <span
+                    <label for="inputTitle" class="form-label text-light">Nome dell'appartamento<span
                             class="text-danger">*</span></label>
                     <input type="text" class="form-control @error('apartment_name') is-invalid @enderror"
                         value="{{ old('apartment_name') }}" id="inputapartment_name" name="apartment_name">
@@ -23,36 +24,128 @@
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
+
+                {{-- Apartment rooms insertion and error handling through js --}}
                 <div class="col-12">
-                    <label for="inputTitle" class="form-label text-light">Immagine Appartamento <span
+                    <label for="inputTitle" class="form-label text-light">Stanze<span
                             class="text-danger">*</span></label>
-                    <input type="file" class="form-control @error('img') is-invalid @enderror"
-                        value="{{ old('img') }}" id="inputimg" name="img" accept="image/*">
-                    <div id="error-img" class="invalid_feedback"></div>
-                    @error('img')
+                    <input type="number" class="form-control @error('apartment_rooms') is-invalid @enderror"
+                        value="{{ old('apartment_rooms') }}" id="inputapartment_rooms" name="apartment_rooms">
+                    <div id="error-apartmentrooms" class="invalid_feedback"></div>
+                    @error('apartment_rooms')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
 
-
-
-
-                
+                {{-- Apartment beds insertion and error handling through js --}}
                 <div class="col-12">
-                    <label for="inputTitle" class="form-label text-light">Indirizzo <span
+                    <label for="inputTitle" class="form-label text-light">Letti<span
                             class="text-danger">*</span></label>
-                    {{-- value="{{ old('email'= ottenere il valore precedentemente inviato --}}
-                    {{-- , $name?->email) }} = stampare il valore di email --}}
-                    {{-- , $name?->email) }} = "?" se la variabile $name non è definito assegna "null"  --}}
-                    <input type="text" class="form-control @error('address') is-invalid @enderror"
-                        value="{{ old('address') }}" id="inputaddress" name="address"
-                        placeholder="Esempio: Via Brombeis n°23">
-                    <div id="error-address" class="invalid_feedback"></div>
-                    @error('address')
-                        <div class="invalid_feedback">{{ $message }}</div>
+                    <input type="number" class="form-control @error('apartment_beds') is-invalid @enderror"
+                        value="{{ old('apartment_beds') }}" id="inputapartment_beds" name="apartment_beds">
+                    <div id="error-apartmentbeds" class="invalid_feedback"></div>
+                    @error('apartment_beds')
+                        <div class="invalid_feedback"></div>
                     @enderror
                 </div>
-                <label for="inputTitle" class="form-label text-light">Tipologia <span class="text-danger">*</span></label>
+
+                {{-- Apartment bathrooms insertion and error handling through js --}}
+                <div class="col-12">
+                    <label for="inputTitle" class="form-label text-light">Bagni<span
+                            class="text-danger">*</span></label>
+                    <input type="number" class="form-control @error('apartment_bathrooms') is-invalid @enderror"
+                        value="{{ old('apartment_bathrooms') }}" id="inputapartment_bathrooms" name="apartment_bathrooms">
+                    <div id="error-apartmentbathrooms" class="invalid_feedback"></div>
+                    @error('apartment_bathrooms')
+                        <div class="invalid_feedback"></div>
+                    @enderror
+                </div>
+
+                {{-- Apartment size(mq) insertion and error handling through js --}}
+                <div class="col-12">
+                    <label for="inputTitle" class="form-label text-light">Superficie in mq<span
+                            class="text-danger">*</span></label>
+                    <input type="number" class="form-control @error('apartment_mq') is-invalid @enderror"
+                        value="{{ old('apartment_mq') }}" id="inputapartment_mq" name="apartment_mq">
+                    <div id="error-apartmentmq" class="invalid_feedback"></div>
+                    @error('apartment_mq')
+                        <div class="invalid_feedback"></div>
+                    @enderror
+                </div>
+
+                {{-- Apartment address insertion and error handling through js --}}
+                <div class="col-12">
+                    <label for="inputTitle" class="form-label text-light">Indirizzo<span
+                            class="text-danger">*</span></label>
+                    <input type="text" class="form-control @error('apartment_address') is-invalid @enderror"
+                        value="{{ old('apartment_address') }}" id="inputapartment_address" name="apartment_address">
+                    <div id="error-apartmentaddress" class="invalid_feedback"></div>
+                    @error('apartment_address')
+                        <div class="invalid_feedback"></div>
+                    @enderror
+                </div>
+
+                {{-- Apartment latitude insertion and error handling through js --}}
+                <div class="col-12">
+                    <label for="inputTitle" class="form-label text-light">Latitudine<span
+                            class="text-danger">*</span></label>
+                    <input type="number" class="form-control @error('latitude') is-invalid @enderror"
+                        value="{{ old('latitude') }}" id="inputlatitude" name="latitude">
+                    <div id="errorlatitude" class="invalid_feedback"></div>
+                    @error('latitude')
+                        <div class="invalid_feedback"></div>
+                    @enderror
+                </div>
+
+                {{-- Apartment longitude insertion and error handling through js --}}
+                <div class="col-12">
+                    <label for="inputTitle" class="form-label text-light">Longitudine<span
+                            class="text-danger">*</span></label>
+                    <input type="number" class="form-control @error('longitude') is-invalid @enderror"
+                        value="{{ old('longitude') }}" id="inputlongitude" name="longitude">
+                    <div id="errorlongitude" class="invalid_feedback"></div>
+                    @error('longitude')
+                        <div class="invalid_feedback"></div>
+                    @enderror
+                </div>
+
+                {{-- Apartment photo insertion and error handling through js --}}
+                <div class="col-12">
+                    <label for="inputTitle" class="form-label text-light">Immagine Appartamento<span
+                            class="text-danger">*</span></label>
+                    <input type="file" class="form-control @error('photo') is-invalid @enderror"
+                        value="{{ old('photo') }}" id="inputphoto" name="photo" accept="image/*">
+                    <div id="error-photo" class="invalid_feedback"></div>
+                    @error('photo')
+                        <div class="invalid_feedback"></div>
+                    @enderror
+                </div>
+
+                {{-- Apartment visibility toggle and error handling through js --}}
+                <label class="form-check-label text-light" for="flexRadioDefault2">
+                    Visibile <span class="text-danger">*</span>
+                </label>
+                <div class="form-check @error('visible') is-invalid @enderror">
+                    <input class="form-check-input type-radios" type="radio" name="visible" id="flexRadioDefault1"
+                        value="1">
+                    <label class="form-check-label text-light " for="flexRadioDefault1">
+                        Si
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input type-radios" type="radio" name="visible" id="flexRadioDefault2"
+                        value="0">
+                    <label class="form-check-label text-light" for="flexRadioDefault1">
+                        No
+                    </label>
+                </div>
+                <div id="error-visible" class="invalid_feedback"></div>
+                @error('visible')
+                    <div class="invalid_feedback"></div>
+                @enderror
+
+                {{-- Apartment services checkboxes and error handling through js --}}
+                <label for="inputTitle" class="form-label text-light">Servizi inclusi<span class="text-danger">*</span></label>
                 <div class="d-flex gap-3">
                     @foreach ($types as $type)
                         <div class="form-check form-switch  @error('types') is-invalid @enderror">
