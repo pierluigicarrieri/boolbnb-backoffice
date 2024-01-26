@@ -69,6 +69,13 @@
                                 <a class="dropdown-item" href="{{ url('admin/admin') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('admin/profile') }}">{{__('Profile')}}</a>
 
+                                {{-- User's apartments list if user is logged in --}}
+
+                                @if (Auth::check() && Auth::user()->apartments)
+                                <a class="dropdown-item"
+                                    href="{{ route('admin.apartments.index') }}">{{ __('I tuoi appartmenti') }}</a>
+                                @endif
+
                                 {{-- Apartment creation if user is logged in --}}
 
                                 @if (Auth::check())
