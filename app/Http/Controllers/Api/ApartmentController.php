@@ -13,4 +13,15 @@ class ApartmentController extends Controller
         $apartments = Apartment::all();
         return response()->json($apartments);
     }
+
+    public function show($id): JsonResponse
+    {
+        $apartment = Apartment::find($id);
+
+        if (!$apartment) {
+            return response()->json(['error' => 'Appartamento non trovato'], 404);
+        }
+
+        return response()->json($apartment);
+    }
 }
