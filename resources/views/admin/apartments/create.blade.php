@@ -7,7 +7,7 @@
             <h1 class="my-4 text-center text-light">Inserisci i dati per registrare il tuo Appartamento!</h1>
             <form action="{{ route('admin.apartments.store') }}" class="row g-3" method="POST" 
             enctype="multipart/form-data" 
-            {{-- when submit is pressed call to javascript function for data validation, script at the bottom of the page --}}
+            {{-- When submit is pressed call to javascript function for data validation, script at the bottom of the page --}}
             {{-- onsubmit="return(validate())"  --}}
             >
                 @csrf()
