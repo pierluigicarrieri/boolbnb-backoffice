@@ -17,10 +17,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Nome dell'appartamento<span
                             class="text-danger">*</span></label>
-                    <input type="text" class="form-control @error('apartment_name') is-invalid @enderror"
-                        value="{{ old('apartment_name') }}" id="inputapartment_name" name="apartment_name">
-                    <div id="error-apartmentname" class="invalid_feedback"></div>
-                    @error('apartment_name')
+                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                        value="{{ old('name') }}" id="inputname" name="name">
+                    <div id="errorname" class="invalid_feedback"></div>
+                    @error('name')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
@@ -29,10 +29,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Stanze<span
                             class="text-danger">*</span></label>
-                    <input type="number" class="form-control @error('apartment_rooms') is-invalid @enderror"
-                        value="{{ old('apartment_rooms') }}" id="inputapartment_rooms" name="apartment_rooms">
-                    <div id="error-apartmentrooms" class="invalid_feedback"></div>
-                    @error('apartment_rooms')
+                    <input type="number" class="form-control @error('rooms') is-invalid @enderror"
+                        value="{{ old('rooms') }}" id="inputrooms" name="rooms">
+                    <div id="errorrooms" class="invalid_feedback"></div>
+                    @error('rooms')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
@@ -41,10 +41,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Letti<span
                             class="text-danger">*</span></label>
-                    <input type="number" class="form-control @error('apartment_beds') is-invalid @enderror"
-                        value="{{ old('apartment_beds') }}" id="inputapartment_beds" name="apartment_beds">
-                    <div id="error-apartmentbeds" class="invalid_feedback"></div>
-                    @error('apartment_beds')
+                    <input type="number" class="form-control @error('beds') is-invalid @enderror"
+                        value="{{ old('beds') }}" id="inputbeds" name="beds">
+                    <div id="errorbeds" class="invalid_feedback"></div>
+                    @error('beds')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
@@ -53,10 +53,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Bagni<span
                             class="text-danger">*</span></label>
-                    <input type="number" class="form-control @error('apartment_bathrooms') is-invalid @enderror"
-                        value="{{ old('apartment_bathrooms') }}" id="inputapartment_bathrooms" name="apartment_bathrooms">
-                    <div id="error-apartmentbathrooms" class="invalid_feedback"></div>
-                    @error('apartment_bathrooms')
+                    <input type="number" class="form-control @error('bathrooms') is-invalid @enderror"
+                        value="{{ old('bathrooms') }}" id="inputbathrooms" name="bathrooms">
+                    <div id="errorbathrooms" class="invalid_feedback"></div>
+                    @error('bathrooms')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
@@ -65,10 +65,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Superficie in mq<span
                             class="text-danger">*</span></label>
-                    <input type="number" class="form-control @error('apartment_mq') is-invalid @enderror"
-                        value="{{ old('apartment_mq') }}" id="inputapartment_mq" name="apartment_mq">
-                    <div id="error-apartmentmq" class="invalid_feedback"></div>
-                    @error('apartment_mq')
+                    <input type="number" class="form-control @error('mq') is-invalid @enderror"
+                        value="{{ old('mq') }}" id="inputmq" name="mq">
+                    <div id="errormq" class="invalid_feedback"></div>
+                    @error('mq')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
@@ -77,10 +77,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Indirizzo<span
                             class="text-danger">*</span></label>
-                    <input type="text" class="form-control @error('apartment_address') is-invalid @enderror"
-                        value="{{ old('apartment_address') }}" id="inputapartment_address" name="apartment_address">
-                    <div id="error-apartmentaddress" class="invalid_feedback"></div>
-                    @error('apartment_address')
+                    <input type="text" class="form-control @error('address') is-invalid @enderror"
+                        value="{{ old('address') }}" id="inputaddress" name="address">
+                    <div id="erroraddress" class="invalid_feedback"></div>
+                    @error('address')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
@@ -89,10 +89,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Latitudine<span
                             class="text-danger">*</span></label>
-                    <input type="number" class="form-control @error('latitude') is-invalid @enderror"
-                        value="{{ old('latitude') }}" id="inputlatitude" name="latitude">
-                    <div id="errorlatitude" class="invalid_feedback"></div>
-                    @error('latitude')
+                    <input type="text" class="form-control @error('lat') is-invalid @enderror"
+                        value="{{ old('lat') }}" id="inputlat" name="lat">
+                    <div id="errorlat" class="invalid_feedback"></div>
+                    @error('lat')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>
@@ -101,10 +101,10 @@
                 <div class="col-12">
                     <label for="inputTitle" class="form-label text-light">Longitudine<span
                             class="text-danger">*</span></label>
-                    <input type="number" class="form-control @error('longitude') is-invalid @enderror"
-                        value="{{ old('longitude') }}" id="inputlongitude" name="longitude">
-                    <div id="errorlongitude" class="invalid_feedback"></div>
-                    @error('longitude')
+                    <input type="text" class="form-control @error('lon') is-invalid @enderror"
+                        value="{{ old('lon') }}" id="inputlon" name="lon">
+                    <div id="errorlon" class="invalid_feedback"></div>
+                    @error('lon')
                         <div class="invalid_feedback"></div>
                     @enderror
                 </div>

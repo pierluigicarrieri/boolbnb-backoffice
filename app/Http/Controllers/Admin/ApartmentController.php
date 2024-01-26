@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ApartmentCreateRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Apartment;
 use App\Models\Service;
@@ -30,13 +31,14 @@ class ApartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ApartmentCreateRequest $request)
     {
         //Validazione
         $data = $request->validated();
 
         //Il campo del form Img viene messo nello storage 
         $data["img"] = Storage::put("", $data["photo"]);
+
         //Prende lo user che ha fatto la request
         $user = $request->user();
 
@@ -45,9 +47,9 @@ class ApartmentController extends Controller
         //collega il ristorante appena creato all'utente autenticato.
         $user->apartments()->save($apartment);
 
-        //se nel form è presente il valore data types  
+        //se nel form è presente il valore data services  
         if (key_exists("services", $data)) {
-            //associamento tra restaurant e il type
+            //associamento tra apartment e il service
             $apartment->services()->attach($data["services"]);
         }
         return redirect()->route("admin.apartments.show", $apartment->id);
