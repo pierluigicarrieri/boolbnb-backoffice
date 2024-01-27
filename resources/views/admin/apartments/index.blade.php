@@ -20,11 +20,16 @@
                                 <p class="card-text">{{ $apartment->visible ? 'Visibile' : 'Non visibile' }}</p>
                             </div>
                             <div class="d-flex justify-content-between card-body">
-                                {{-- <a href="{{ route('admin.apartment.edit', $apartment->id) }}"
-                                    class="btn btn-success ">Aggiorna
-                                </a> --}}
 
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-success">
+                                    <a href="{{ route('admin.apartments.show', $apartment->id) }}">Dettagli</a>
+                                </button>
+
+                                <button type="button" class="btn btn-warning">
+                                    <a href="">Modifica</a>
+                                </button>
+
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
                                     Elimina
                                 </button>
