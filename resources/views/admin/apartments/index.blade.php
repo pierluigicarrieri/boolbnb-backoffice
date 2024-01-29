@@ -26,7 +26,7 @@
                                 </button>
 
                                 <button type="button" class="btn btn-warning">
-                                    <a href="">Modifica</a>
+                                    <a href="{{ route('admin.apartments.edit', $apartment->id) }}">Modifica</a>
                                 </button>
 
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
