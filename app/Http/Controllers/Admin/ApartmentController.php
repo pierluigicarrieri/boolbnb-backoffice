@@ -90,17 +90,41 @@ class ApartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+
+        $apartment = Apartment::findOrFail($id);
+        $services = Service::all();
+
+        return view("admin.apartments.edit")->with(['apartment' => $apartment, 'services' => $services]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ApartmentCreateRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $apartment = Apartment::findOrFail($id);
+
+        //se data[photo] ha un valore esegui
+        if (key_exists("photo", $data)) {
+            // se data[photo] ha un valore fai il put di photo
+            $data["photo"] = Storage::put("", $data["photo"]);
+        } else {
+            //altrimenti metti l'img di prima
+            $data["photo"] = $apartment->photo;
+        }
+
+        //se nel form è presente il valore data services  
+        if (key_exists("services", $data)) {
+            //associazione tra apartment e il service
+            $apartment->services()->sync($data["services"]);
+        }
+
+        $apartment->update($data);
+
+        return redirect()->route("admin.apartments.index");
     }
 
     /**
