@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/apartments', [ApartmentController::class, 'index']);
 Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
+Route::post('/save-apartment-data', [ApartmentController::class, 'saveApartmentData']);
