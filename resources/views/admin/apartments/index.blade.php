@@ -29,36 +29,34 @@
                                     <a href="{{ route('admin.apartments.edit', $apartment->id) }}">Modifica</a>
                                 </button>
 
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop">
-                                    Elimina
-                                </button>
+                                {{-- Added $apartment->id to the modal, if not id is always the same and the first apartment rendered is the one deleted --}}
 
-                                <div class="modal fade text-black" id="staticBackdrop" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Elimina l'appartamento</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body  ">
-                                                Sei sicuro di voler eliminare l'appartamento?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-success  "
-                                                    data-bs-dismiss="modal">Chiudi</button>
-                                                <form action="{{ route('admin.apartments.destroy', $apartment->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Conferma</button>
-                                                </form>
-                                            </div>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $apartment->id }}">Elimina</button>
+
+                                <div class="modal fade text-black" id="staticBackdrop{{ $apartment->id }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel{{ $apartment->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel{{ $apartment->id }}">Elimina</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Sei sicuro di voler eliminare l'appartamento?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success"
+                                                data-bs-dismiss="modal">Chiudi</button>
+                                            <form action="{{ route('admin.apartments.destroy', $apartment->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Conferma</button>
+                                            </form>
                                         </div>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>

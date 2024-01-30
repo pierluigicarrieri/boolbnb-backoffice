@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Apartment;
 use App\Models\Service;
+use App\Models\Sponsorship;
 
 class ApartmentController extends Controller
 {
@@ -94,6 +95,7 @@ class ApartmentController extends Controller
     {
 
         $apartment = Apartment::findOrFail($id);
+
         $services = Service::all();
 
         return view("admin.apartments.edit")->with(['apartment' => $apartment, 'services' => $services]);
@@ -105,6 +107,7 @@ class ApartmentController extends Controller
     public function update(ApartmentCreateRequest $request, $id)
     {
         $data = $request->validated();
+        
         $apartment = Apartment::findOrFail($id);
 
         //se data[photo] ha un valore esegui
@@ -130,8 +133,26 @@ class ApartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy($id) {
+
+        $apartment = Apartment::findOrFail($id);
+
+        // Control to delete image from 'storage' folder
+        if ($apartment->photo) {
+
+            Storage::delete($apartment->photo);
+        }
+
+        //Deletes relations
+        $apartment->services()->detach();
+
+        $apartment->sponsorships()->detach();
+
+        //Deletes '$apartment'
+        $apartment->delete();
+
+        //Redirects to 'index' route
+        return redirect()->route('admin.apartments.index');
+
     }
 }
