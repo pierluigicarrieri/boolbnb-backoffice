@@ -116,7 +116,14 @@ class ApartmentController extends Controller
             $data["photo"] = $apartment->photo;
         }
 
+        //se nel form è presente il valore data services  
+        if (key_exists("services", $data)) {
+            //associazione tra apartment e il service
+            $apartment->services()->sync($data["services"]);
+        }
+
         $apartment->update($data);
+
         return redirect()->route("admin.apartments.index");
     }
 
