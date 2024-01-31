@@ -75,6 +75,11 @@
                                 <a class="dropdown-item"
                                     href="{{ route('admin.apartments.index') }}">{{ __('I tuoi appartmenti') }}</a>
                                 @endif
+                                {{-- your message for user apartent id relative --}}
+                                @if (Auth::check() && Auth::user()->apartments)
+                                <a class="dropdown-item" href="{{ route('admin.messages.index') }}">{{ __('messaggi') }}</a>
+                            @endif
+                            
 
                                 {{-- Apartment creation if user is logged in --}}
 
