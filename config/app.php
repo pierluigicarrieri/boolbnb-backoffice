@@ -31,6 +31,8 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    //la chiave di tomtom
+    'tomtom_api_key' => env('TOMTOM_API_KEY'),
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -41,6 +43,8 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
+    
+
 
     'debug' => (bool) env('APP_DEBUG', false),
 
