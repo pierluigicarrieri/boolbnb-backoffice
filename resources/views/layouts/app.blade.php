@@ -43,7 +43,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{url('http://localhost:5174') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -68,6 +68,13 @@
                             <div style="left: -160px;" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('admin/admin') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('admin/profile') }}">{{__('Profile')}}</a>
+
+                                {{-- User's apartments list if user is logged in --}}
+
+                                @if (Auth::check() && Auth::user()->apartments)
+                                <a class="dropdown-item"
+                                    href="{{ route('admin.apartments.index') }}">{{ __('I tuoi appartmenti') }}</a>
+                                @endif
 
                                 {{-- Apartment creation if user is logged in --}}
 

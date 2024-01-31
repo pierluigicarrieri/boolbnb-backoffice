@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Apartment;
 use App\Models\Service;
+use App\Models\Sponsorship;
 
 class ApartmentController extends Controller
 {
@@ -17,7 +18,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+        $userId = Auth::user()->id;
+        $apartments = Apartment::where("user_id", $userId)->orderBy('name')->get();
+        return view("admin.apartments.index", compact("apartments"));
     }
 
     /**
@@ -88,24 +91,68 @@ class ApartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+
+        $apartment = Apartment::findOrFail($id);
+
+        $services = Service::all();
+
+        return view("admin.apartments.edit")->with(['apartment' => $apartment, 'services' => $services]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ApartmentCreateRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        
+        $apartment = Apartment::findOrFail($id);
+
+        //se data[photo] ha un valore esegui
+        if (key_exists("photo", $data)) {
+            // se data[photo] ha un valore fai il put di photo
+            $data["photo"] = Storage::put("", $data["photo"]);
+        } else {
+            //altrimenti metti l'img di prima
+            $data["photo"] = $apartment->photo;
+        }
+
+        //se nel form è presente il valore data services  
+        if (key_exists("services", $data)) {
+            //associazione tra apartment e il service
+            $apartment->services()->sync($data["services"]);
+        }
+
+        $apartment->update($data);
+
+        return redirect()->route("admin.apartments.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy($id) {
+
+        $apartment = Apartment::findOrFail($id);
+
+        // Control to delete image from 'storage' folder
+        if ($apartment->photo) {
+
+            Storage::delete($apartment->photo);
+        }
+
+        //Deletes relations
+        $apartment->services()->detach();
+
+        $apartment->sponsorships()->detach();
+
+        //Deletes '$apartment'
+        $apartment->delete();
+
+        //Redirects to 'index' route
+        return redirect()->route('admin.apartments.index');
+
     }
 }
