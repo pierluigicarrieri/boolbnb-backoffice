@@ -1,0 +1,11 @@
+.in apartament  la validazione di longitudine da errori non dovuti 
+
+.in apartament edit aggiungere un old al dato di visible e l'immagine va gestita diversamente
+
+.aggiungere il salvataggio delle immagini dello storage e far funzionare la loro visualizzazione
+
+.cambiare header con logo
+
+.gestire il reindirizzamento del login  per togliere la dashboard
+
+. in apartament show la zona dei servizzi offerti va sistemata
